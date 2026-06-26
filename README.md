@@ -1,6 +1,6 @@
 # PCRC Standalone Code Package
 
-This package contains the standalone code needed to run the PCRC experiments on a local machine. Large raw datasets, generated rollouts, figures, tables, audit logs, manuscript drafts, and historical delivery bundles are intentionally not included.
+This package contains the code needed to run the PCRC experiments on a local machine. 
 
 The package keeps the project runnable and compact:
 
@@ -10,7 +10,6 @@ The package keeps the project runnable and compact:
 - `tests/`: focused tests for core methods, schemas, data loaders, and smoke experiments.
 - `data/`, `rollouts/`, `figures/`, `tables/`, `reports/`, `audit/`: empty output directories created for local runs.
 
-This reader package is PCRC-only: it reproduces the paper's proposed method for the packaged main experiments. External comparator implementations, external-comparison run harnesses, and auxiliary method-variant study code are not bundled.
 
 ## Environment
 
@@ -29,8 +28,6 @@ If editable installs are inconvenient, use:
 python -m pip install -r requirements-dev.txt
 export PYTHONPATH=src
 ```
-
-GPU is optional. The code falls back to CPU when CUDA or LightGBM GPU support is unavailable.
 
 ## Quick Smoke Run
 
@@ -81,24 +78,6 @@ PYTHONPATH=src python scripts/run_d2_credit.py --config configs/exp4_credit_case
 PYTHONPATH=src python scripts/run_offpolicy_d0.py --config configs/exp5_offpolicy.yaml
 ```
 
-Generated artifacts are written locally to:
 
-- `rollouts/`
-- `data/processed/`
-- `figures/main/` and `figures/app/`
-- `tables/main/` and `tables/app/`
-- `reports/`
-- `audit/runtime/`
-
-## What Is Not Included
-
-The zip intentionally excludes:
-
-- Raw datasets and processed data caches.
-- Generated rollouts, figures, tables, audit logs, and paper/report outputs.
-- Manuscript-building scripts and DOCX/PDF submission artifacts.
-- External comparator source repositories, comparator adapters, and comparator run harnesses.
-- Auxiliary method-variant study source, configs, scripts, and outputs.
-- Python cache files and other local machine artifacts.
 
 See `PACKAGE_MANIFEST.md` for a detailed include/exclude list.

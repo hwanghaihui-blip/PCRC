@@ -1,0 +1,21 @@
+name: smoke_cpu
+dataset: D0
+methods:
+  - PCRC
+seeds:
+  - 7
+nominal_alpha: 0.1
+rounds: 8
+calibration_budget: 64
+action_grid:
+  - 0.85
+  - 1.0
+  - 1.15
+device: cpu
+params:
+  regimes:
+    - S1_stable
+  pretrain_samples: 128
+  model_kind: lgbm_regression
+  temperature: 0.1
+  mc_draws: 16

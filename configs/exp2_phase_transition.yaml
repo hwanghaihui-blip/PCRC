@@ -1,0 +1,56 @@
+name: exp2_phase_transition
+dataset: D0
+methods:
+  - PCRC
+seeds:
+  - 7
+  - 11
+  - 19
+  - 23
+  - 29
+nominal_alpha: 0.1
+rounds: 200
+calibration_budget: 512
+action_grid:
+  - 0.85
+  - 0.925
+  - 1.0
+  - 1.075
+  - 1.15
+device: cuda:1
+params:
+  regimes:
+    - S1_stable
+    - S2_critical
+    - S3_unstable
+  pretrain_samples: 2048
+  model_kind: lgbm_regression
+  beta: 0.9
+  mc_draws: 96
+  temperature: 0.1
+  regime_temperature:
+    S1_stable: 0.02
+    S2_critical: 0.02
+  regime_method_overrides:
+    S1_stable:
+      PCRC:
+        geometry_type: G2
+        root_blend: 0.0
+        adapt_rate: 0.02
+        decision_weight: 0.1
+        utility_weight: 0.0
+        safety_margin: 0.2
+    S2_critical:
+      PCRC:
+        geometry_type: G2
+        root_blend: 0.2
+        adapt_rate: 0.02
+        decision_weight: 0.0
+        utility_weight: 0.0
+    S3_unstable:
+      PCRC:
+        geometry_type: G2
+        root_blend: 0.5
+        adapt_rate: 0.08
+        decision_weight: 0.0
+        utility_weight: 0.0

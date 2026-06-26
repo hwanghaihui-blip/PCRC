@@ -1,0 +1,42 @@
+name: exp3_m5_case
+dataset: D1
+methods:
+  - PCRC
+seeds:
+  - 7
+  - 11
+  - 19
+  - 23
+  - 29
+nominal_alpha: 0.1
+rounds: 60
+calibration_budget: 512
+action_grid:
+  - 0.85
+  - 0.925
+  - 1.0
+  - 1.075
+  - 1.15
+device: cuda:0
+params:
+  model_kind: lgbm_regression
+  temperature: 0.1
+  beta: 0.9
+  monte_carlo_draws: 40
+  stockout_penalty: 0.8
+  holding_cost: 0.05
+  variance_scale: 0.35
+  trajectory_points_per_level: 12
+  states: ["CA", "TX"]
+  categories: ["FOODS", "HOUSEHOLD"]
+  stores: ["CA_1", "CA_2", "TX_1", "TX_2"]
+  max_series: 300
+  method_overrides:
+    PCRC:
+      geometry_type: G2
+      neutral_action: 1.15
+      decision_weight: 0.0
+      utility_weight: 0.0
+      safety_margin: 0.5
+      root_blend: 0.8
+      adapt_rate: 0.05

@@ -1,0 +1,46 @@
+name: exp4_credit_case
+dataset: D2
+methods:
+  - PCRC
+seeds:
+  - 7
+  - 11
+  - 19
+  - 23
+  - 29
+nominal_alpha: 0.1
+rounds: 40
+calibration_budget: 1024
+action_grid:
+  - 0.05
+  - 0.1
+  - 0.15
+  - 0.2
+  - 0.25
+  - 0.3
+  - 0.35
+  - 0.4
+  - 0.45
+  - 0.5
+  - 0.55
+device: cpu
+params:
+  model_kind: credit_classifier
+  temperature: 0.1
+  beta: 0.9
+  approval_floor: 0.15
+  batch_size: 256
+  anchor_threshold: 0.3
+  lgd: 0.75
+  interest_margin: 0.03
+  composition_strength: 0.35
+  near_threshold_band: 0.08
+  method_overrides:
+    PCRC:
+      geometry_type: G2
+      root_blend: 0.5
+      adapt_rate: 0.08
+      decision_weight: 0.8
+      utility_weight: 0.2
+      neutral_action: 0.2
+      score_normalized: false

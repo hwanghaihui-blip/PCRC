@@ -1,0 +1,21 @@
+name: smoke_d0
+dataset: D0
+methods:
+  - PCRC
+seeds:
+  - 7
+nominal_alpha: 0.1
+rounds: 20
+calibration_budget: 128
+action_grid:
+  - 0.85
+  - 0.925
+  - 1.0
+  - 1.075
+  - 1.15
+device: cuda:1
+params:
+  regimes:
+    - S1_stable
+  pretrain_samples: 512
+  temperature: 0.1
